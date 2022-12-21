@@ -401,9 +401,12 @@ document.querySelector('.b-25').addEventListener('click', function () {
 
 function t26() {
     const name = document.querySelector('.i-26').value;
-
-    if (name === '') return;
-    document.querySelector('.out-26').innerHTML = name.toLowerCase();
+    const out = document.querySelector('.out-26');
+    name.trim()
+    if (name !== '') {
+        out.innerHTML = name.toLowerCase();
+    }
+    return false;
 }
 
 document.querySelector('.b-26').addEventListener('click', t26);
@@ -446,8 +449,7 @@ document.querySelector('.b-28').addEventListener('click', function () {
 // Напишите функцию, которая получает в качестве аргументов строки и возвращает большую строку (прямым сравнением).
 
 function t29(str1, str2) {
-    if (str1.length > str2.length) return str1;
-    if (str2.length > str1.length) return str2;
+    return (str1 > str2) ? str1 : str2;
 }
 
 document.querySelector('.b-29').addEventListener('click', function () {
@@ -464,7 +466,7 @@ function t31() {
 }
 
 function t30() {
-    return t31();
+    return t31;
 }
 
 
