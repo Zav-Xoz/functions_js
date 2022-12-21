@@ -86,7 +86,7 @@ function t6(arr, block) {
     for (let item of arr) {
         out += `${item} `;
     }
-    out6.innerHTML = out;
+    block.innerHTML = out;
 }
 
 document.querySelector('.b-6').addEventListener('click', function () {
@@ -108,7 +108,7 @@ function t7(arr = [], block) {
     for (let item of arr) {
         out += `${item} `;
     }
-    out7.innerHTML = out;
+    block.innerHTML = out;
 }
 
 document.querySelector('.b-7').addEventListener('click', function () {
