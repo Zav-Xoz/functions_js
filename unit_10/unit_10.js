@@ -5,9 +5,9 @@ function t1(n) {
     let out = '';
 
     function r1(z) {
+        if (z < 0) return;
         out += z + ' ';
         z--;
-        if (z <= 0) return;
         r1(z);
     }
     r1(n);
@@ -23,17 +23,16 @@ document.querySelector('.b-1').addEventListener('click', () => {
 
 // Task 2
 // Функция принимает число. Напишите рекурсивную функцию r2, которая выводит числа от 0 до введенного числа в out-2 с шагом 2. Разделитель - пробел.
-
 function t2(n) {
     let out = '';
-    let i = 0;
+
     function r2(z) {
-        out += i + ' ';
-        i = i + 2;
-        if (i >= z) return;
+        if (z > n) return;
+        out += `${z} `;
+        z += 2;
         r2(z);
     }
-    r2(n);
+    r2(0);
     document.querySelector('.out-2').innerHTML = out;
 }
 
@@ -295,7 +294,6 @@ document.querySelector('.b-10').addEventListener('click', () => {
     }
     document.querySelector('.out-10').innerHTML = ar10_res;
 });
-
 
 
 
