@@ -69,15 +69,15 @@ document.querySelector('.b-5').addEventListener('click', () => {
 // Task 6
 // Давайте напишем pure функцию t6, которая получает массив и возвращает его развернутым на 180 градусов ( чистый аналог reverse ). Функция запускается по кнопке .b-6. Для проверки - выводите результат на страницу, через пробел.
 function t6(array) {
-    let out = '';
+    let outArr = [];
     for (let i = array.length - 1; i >= 0; i--) {
-        out += `${array[i]} `;
+        outArr = [...outArr, array[i]];
     }
-    return out;
+    return outArr;
 }
 
 document.querySelector('.b-6').addEventListener('click', () => {
-    document.querySelector('.out-6').innerHTML = t6([1, 2, 3, 4, 5, 6])
+    document.querySelector('.out-6').innerHTML = t6([1, 2, 3, 4, 5, 6]).join(' ');
 })
 // Task 7
 // Давайте напишем функцию t7, которая позволяет выводить текст переданный ей в качестве аргумента text в блок block. При этом переданный текст с помощью trim очищается от пробелов до и после и переводится в нижний регистр. Ваша задача модицифировать функцию и запуск так, чтобы она стала pure.
@@ -120,8 +120,8 @@ document.querySelector('.b-9').addEventListener('click', () => {
 // Task 10
 // Метод push мутирует массив. Давайте напишем pure функцию t10 которая принимает массив и любое количество чисел в качестве аргументов и возвращает новый массив равный исходному с добавленными в него числами ( добавленным в конце массива). Запускаться функция дожна при нажатии  на кнопку b-10. Для проверки - выводите результат на страницу через пробел. 
 
-function t10(arr, value) {
-    const newArr = [...arr, ...value];
+function t10(arr, ...value) {
+    const newArr = arr.concat(...value);
     console.log(newArr)
     return newArr;
 }
@@ -129,3 +129,6 @@ function t10(arr, value) {
 document.querySelector('.b-10').addEventListener('click', () => {
     document.querySelector('.out-10').innerHTML = t10([1, 2, 3, 4], [41, 42, 43, 44]).join(' ')
 })
+
+// res = t10([4, 5], 200, 300, 400);
+// console.log(res);
