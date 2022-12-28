@@ -6,10 +6,9 @@ function t1(elem) {
     r1(elem);
 
     function r1(element) {
-
+        out += `${element.tagName} `;
+        Array.from(element.children).forEach(item => r1(item));
     }
-
-
     return out;
 }
 
@@ -27,10 +26,11 @@ function t2(elem) {
     r2(elem);
 
     function r2(element) {
-
+        if (typeof +element.innerHTML === 'number' && !isNaN(+element.innerHTML)) {
+            s += +element.innerHTML;
+        }
+        Array.from(element.children).forEach(item => r2(item));
     }
-
-
     return s;
 }
 
@@ -47,11 +47,24 @@ function t3(elem) {
     let out = '';
     r3(elem);
 
+    // function r3(element) {
+
+    //     Array.from(element.childNodes).forEach(item => {
+    //         if (item.nodeName === "#text") {
+    //             out += item.textContent.trim();
+    //             console.log(item.textContent.trim())
+    //         }
+    //         r3(item)
+    //     });
+    // }
+
     function r3(element) {
-
+        if (element.children.length === 0) {
+            out += element.textContent;
+            // console.log(element.textContent);
+        }
+        Array.from(element.children).forEach(item => r3(item));
     }
-
-
     return out;
 }
 
@@ -61,7 +74,6 @@ document.querySelector('.b-3').addEventListener('click', () => {
     console.log(t3(z3));
 });
 
-
 // Task 4
 // При нажатии кнопки запускается функция t4. Функция t4, с помощью рекурсивной функции r4 должна тем тегам внутри z-4, которые не имеют вложенных тегов добавить style.background = orange. 
 
@@ -69,7 +81,11 @@ function t4(elem) {
     r4(elem);
 
     function r4(element) {
-
+        if (element.children.length === 0) {
+            element.style.background = 'orange';
+            // console.log(element.textContent);
+        }
+        Array.from(element.children).forEach(item => r4(item));
     }
 }
 
@@ -87,7 +103,12 @@ function t5(elem) {
     r5(elem);
 
     function r5(element) {
+        if (element.children.length === 0) {
 
+            element.outerHTML = '<mark>' + element.textContent + '<mark>';
+            // console.log(element.textContent);
+        }
+        Array.from(element.children).forEach(item => r5(item));
     }
 }
 
